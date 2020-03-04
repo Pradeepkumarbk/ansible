@@ -1,0 +1,80 @@
+---
+- include_vars:
+    file: "{{ role_path }}/vars/user_details.yml"
+    name: user_details
+- include_vars:
+    file: "{{ role_path }}/vars/group_details.yml"
+    name: group_details
+
+- name: creating groups
+  group:
+    name: "{{ item.name }}"
+    state: present
+  with_items:  "{{ group_details.groups }}"
+
+- name: giving permission to groups
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: "^%{{ item.name }}"
+    line: "%{{ item.name }} ALL=(ALL) ALL"
+    validate: 'visudo -cf %s'
+  when: item.sudo == true and item.passwordless == false
+  with_items:  "{{ group_details.groups }}"
+
+- name: giving permission to sudo groups
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: "^%{{ item.name }}"
+    line: "%{{ item.name }} ALL=(ALL) NOPASSWD: ALL"
+    validate: 'visudo -cf %s'
+  when: item.sudo == true and item.passwordless == true
+  with_items:  "{{ group_details.groups }}"
+
+- name: giving permission to nonsudo groups
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: "^%{{ item.name }}"
+    line: "%{{ item.name }} ALL=(ALL) NOPASSWD: ALL"
+    validate: 'visudo -cf %s'
+  when: item.sudo == false
+  with_items:  "{{ group_details.groups }}"
+
+- user:
+    name: "{{item.username}}"
+    comment: "{{item.comment}}"
+    group: "{{item.group}}"
+    uid: "{{item.uid}}"
+    shell: "{{item.shell}}"
+    password: "{{item.password}}"
+    state: "{{item.state}}"
+    remove: yes
+    force: yes
+  register: add_user
+  #failed_when: add_user.rc is defined and add_user.rc != 8 or add_user.rc is defined and add_user.rc != 0
+  with_items:  "{{ user_details.users }}"
+  when: everyone_root == false
+
+- user:
+    name: "{{item.username}}"
+    comment: "{{item.comment}}"
+    group: "devops"
+    uid: "{{item.uid}}"
+    shell: "{{item.shell}}"
+    password: "{{item.password}}"
+    state: "{{item.state}}"
+    remove: yes
+    force: yes
+  with_items:  "{{ user_details.users }}"
+  when: everyone_root == true
+
+- name: Set authorized key took from file
+  authorized_key:
+    user: "{{item.username}}"
+    state: "{{item.state}}"
+    key: "{{item.key}}"
+  when: item.state == "present"
+  with_items:  "{{ user_details.users }}"
+

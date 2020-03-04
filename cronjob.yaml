@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello-cron
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: kubectl
+            image: lachlanevenson/k8s-kubectl
+            command:
+              - /bin/sh
+              - -c
+              - kubectl exec -i bastion-0 -- /bin/bash -c "cd ansible && ansible-playbook test.yaml -i inventory"
+          restartPolicy: Never

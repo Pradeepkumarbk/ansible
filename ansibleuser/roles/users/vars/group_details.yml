@@ -1,0 +1,22 @@
+---
+groups:
+  # - {
+  #   name: ubuntu,
+  #   sudo: true,
+  #   passwordless: true
+  #   }
+  - {
+    name: devops,
+    sudo: true,
+    passwordless: false
+    }
+  - {
+    name: developers,
+    sudo: false,
+    passwordless: false
+    }
+  - {
+    name: qa,
+    sudo: false,
+    passwordless: false
+    }

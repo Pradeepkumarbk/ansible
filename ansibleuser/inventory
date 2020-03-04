@@ -1,0 +1,1 @@
+bastion  ansible_host=104.45.141.51 ansible_user=red2ops ansible_ssh_pass=red2Op$27

@@ -1,0 +1,13 @@
+---
+
+- hosts: bastion
+  become: Yes
+  become_method: sudo
+  become_user: root
+
+  tasks:
+ 
+     - name: Patch update through command
+       apt:
+         upgrade: dist
+         update_cache: yes

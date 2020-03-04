@@ -1,0 +1,1 @@
+./inventory.sh  -u 2e98e45d-ca97-425c-a559-e4f3f5d31c25 -p  bY6fLR9hypXaWXklhl1u84huEBHN32JnkOmweZd3wwY=  -i bfef2b06-d256-4f8e-bd03-8d3687987063 -s 50ed91e1-bdc5-4d86-a563-7a165a38b582 -r jll-am-rg-red2-dp-dv  -t  dp-red2-eastus2-dev-rg -v MC_jll-am-rg-red2-dp-dv_jll-am-kube-dv_centralus

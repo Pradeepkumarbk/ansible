@@ -1,0 +1,23 @@
+---
+users:
+    - {
+    state: present,
+    username: sujith, 
+    group: devops,
+    comment: "sujith kumar",
+    uid: 2001,
+    shell: /bin/bash,
+    password: "$6$b0nEc4beOpRaX5ib$stv.fabhRbiJqdN/NqWpIwdkPYAEfuHGGqoOXF3gQ3RkPE0e13wn8gPlWXU31OnmONPYMAeroRjMMyMVFNNfL.",
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO2A+Iu8OVTompTD3Y23F343LeHAtgaWRp020nR/X4Ji4vXoO0rKkav3HzvFG1P6DiP24Asbq1nwmE8RTAu2Ensxjs/fn5Wk76TXbblaXYdYpmf0mXrqBH+yltWYPHrvNu/CpGDBzxoG4j9rhFaE+b0YMFG2JRohs/c3rkhTOkIWbkcF19XN1G+XrdDF93qlsTIUzpeL+bFVEPmj1sVf7ZYxuQJVBL2WRGIVMm/6oW1NzI8VINga8h8OddzhEZ9IB6nwJe4mybJFT6UdFGF+2Hehob2IsM+TCBTYnP/yuAQ6LgTPsfc7DYGkA+m1LrUKsamxwskLJnihu6dDTzjY/v sujithkumar.nk@vendor4minsMBP3"
+  }
+    - {
+    state: present,
+    username: sunil,
+    group: developers,
+    comment: "sunil sagar",
+    uid: 2002,
+    shell: /bin/bash,
+    password: "$6$7DmtMvqNYeasyvvx$HqXAHwu5k71KxYlx4XhBclBab9D.JcNZ8TQEVYuQ/gqFvhdXNHZwcOm9DhI6Xp3AsIJlOgXC3vEttjdc4/2xC.",
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1o+2cE6GUUyjCJZIQ35iwdG4+P+vdMta3fy7Ixss+AiWzqMTk0c5Pn1FYHfEig70Rlbilb2lDszI4tWqmcTn7upZmZW5Tgblib6RKeqInL4zto9rtk6xU2AHsxZUrQ7gIyFquKxC3u3ZeGjXu6dWHaMbhIxetsAGjbv24kaqAY0hZdHB65AUfJmx2Wg02cmgwtbR8CRpYCHngPIn2YmjJv/fSViRKZ2IhupSh1mgZoxXUZJXtj4Yqdagh6rAHu/Nyy2pqBb4nUWid2EN6/kUgLtWSHGx7HI043j3r6QgufC6lbxKvfHpZNkcB+PSKX5O9tz1WV07EN+mIMA+HEuyf sunil.saggar@vendor4-admins-MacBook-Pro-4.local"
+  }
+

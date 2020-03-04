@@ -1,0 +1,33 @@
+---
+
+  - hosts: bastion
+    become: Yes
+    become_method: sudo
+    become_user: root
+  
+    tasks:
+  
+      - name: Patch update for aks vms.
+        command: "{{ item }}"
+        with_items:
+          - apt-get update
+          - apt-get upgrade -y -f
+          - apt-get dist-upgrade -y -f
+        when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  
+      - name: Restart server
+        command: /sbin/shutdown -r +1
+        async: 0
+        poll: 0
+        ignore_errors: true
+        when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+        - name: Patch update for vmss.
+        command: "{{ item }}"
+        with_items:
+          - yum -y update
+          - yum -y upgrade
+        when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+      
+  
+  

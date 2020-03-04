@@ -1,0 +1,14 @@
+- name: ssh user management prod
+  hosts: bastion
+  become: yes
+  vars:
+    everyone_root: true
+  roles:
+    - users
+# - name: ssh user management test server
+#   hosts: dev
+#   become: yes
+#   vars:
+#     everyone_root: true
+#   roles:
+#     - users
